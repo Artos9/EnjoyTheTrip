@@ -98,7 +98,6 @@ THE SOFTWARE.-->
                         </select>
                     </div>
                     <button type="submit" class="btn btn-warning">Search</button>
-                    <input type="hidden" name="view" value="roomsearch">
                 </form>
 
             </div>

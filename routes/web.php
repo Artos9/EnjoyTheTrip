@@ -13,12 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
+Route::get('/', 'FrontendController@index')->name('home');
+Route::get('/obiekt', 'FrontendController@object')->name('object');
+Route::get('/room', 'FrontendController@room')->name('room');
+Route::get('/article', 'FrontendController@article')->name('article');
+Route::get('/roomSearch', 'FrontendController@roomsearch')->name('roomSearch');
+Route::get(trans('routes.person'), 'FrontendController@person')->name('person');
+
+
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'BackendController@index')->name('adminHome');
+    Route::get('/myObjects', 'BackendController@myobjects')->name('myObjects');
+    Route::get('/saveObjects', 'BackendController@saveobject')->name('saveObject');
+    Route::get('/profile', 'BackendController@profile')->name('profile');
+    Route::get('/saveRoom', 'BackendController@saveRoom')->name('saveRoom');
+    Route::get('/cities', 'BackendController@cities')->name('cities.index');
+
 });
 
-Route::get('/', 'FrontendController@index')->name('home');
-
-Route::get('/obiekt', 'FrontendController@object')->name('object');
-Route::get('/adminHome', 'FrontendController@adminHome')->name('adminHome');
-Route::get('/roomSearch', 'FrontendController@roomSearch')->name('roomSearch');
