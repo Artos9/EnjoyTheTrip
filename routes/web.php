@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::get(trans('routes.person'), 'FrontendController@person')->name('person');
 
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'BackendController@index')->name('adminHome');
     Route::get('/myObjects', 'BackendController@myobjects')->name('myObjects');
     Route::get('/saveObjects', 'BackendController@saveobject')->name('saveObject');
@@ -32,4 +33,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/cities', 'BackendController@cities')->name('cities.index');
 
 });
+
+
+Auth::routes();
+
 
