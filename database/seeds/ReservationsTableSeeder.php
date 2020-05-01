@@ -19,7 +19,7 @@ class ReservationsTableSeeder extends Seeder
 
             'user_id' => $faker->numberBetween(1,9),
             'city_id' => $faker->numberBetween(1,9),
-            'room_id' => $faker->numberBetween(1,9),
+            'room_id' => $faker->numberBetween(1,30),
             'status' => $faker->boolean(50),
             'day_in' => $faker->dateTimebetween('-10 days', 'now'),
             'day_out' => $faker->dateTimebetween('now', '+10 days'),

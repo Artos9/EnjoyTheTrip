@@ -18,7 +18,7 @@ class CreateAddressesTable extends Migration
             $table->string('street');
             $table->integer('number');
             $table->bigInteger('object_id')->unsigned();
-            $table->foreign('object_id')->references('id')->on('objects')->onDelete('cascade');
+            $table->foreign('object_id')->references('id')->on('tourist_objects')->onDelete('cascade');
         });
     }
 

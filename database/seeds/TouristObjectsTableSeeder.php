@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ObjectsTableSeeder extends Seeder
+class TouristObjectsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ObjectsTableSeeder extends Seeder
         $faker = Faker\Factory::create('pl_PL');
         for ($i=1; $i < 10; $i++) { 
 
-            DB::table('objects')->insert([
+            DB::table('tourist_objects')->insert([
 
             'name' => $faker->unique()->word,
             'description' => $faker->text(1000),

@@ -20,7 +20,7 @@ class CreateRoomsTable extends Migration
             $table->integer('price');
             $table->text('description');
             $table->bigInteger('object_id')->unsigned()->nullable();
-            $table->foreign('object_id')->references('id')->on('objects')->onDelete('cascade');
+            $table->foreign('object_id')->references('id')->on('tourist_objects')->onDelete('cascade');
         });
     }
 
