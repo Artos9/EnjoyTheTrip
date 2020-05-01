@@ -22,7 +22,7 @@ class CreateReservationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-            $table->bigInteger('room_id')->unsigned();
+            $table->bigInteger('room_id')->unsigned()->nullable();
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });
     }
