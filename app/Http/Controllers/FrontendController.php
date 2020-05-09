@@ -17,7 +17,7 @@ class FrontendController extends Controller
     {
         $objects = $this->fR->getTouristObjectsforMainPage();
 
-
+        //dd($objects);
 
         return view('frontend.index', ['objects' => $objects]); //finish here
     }
@@ -27,8 +27,10 @@ class FrontendController extends Controller
         return view('frontend.article');
     }
 
-    public function object()
+    public function object($id)
     {
+        $object = $this->fR->getTouristObject($id);
+
         return view('frontend.object');
     }
 

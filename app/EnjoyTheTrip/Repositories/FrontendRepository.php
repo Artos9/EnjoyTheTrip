@@ -8,6 +8,11 @@ class FrontendRepository implements FrontendRepositoryInterface
 {
     public function getTouristObjectsforMainPage()
     {
-        return TouristObject::all();
+        return TouristObject::with(['city','photos'])->ordered()->paginate(8);
+    }
+
+    public function getTouristObject($id)
+    {
+        return TouristObject::find($id);
     }
 }

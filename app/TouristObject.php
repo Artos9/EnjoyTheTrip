@@ -13,7 +13,12 @@ class TouristObject extends Model
 
     public function photos()
     {
-        return $this->morphMany('App\Photo', 'photoable');
+        return $this->morphMany(Photo::class, 'photoable');
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $this->orderBy('name');
     }
 
 }
