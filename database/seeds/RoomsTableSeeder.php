@@ -21,7 +21,7 @@ class RoomsTableSeeder extends Seeder
             'room_size' => $faker->numberBetween(1,5),
             'price' => $faker->numberBetween(100,600),
             'description' => $faker->text(1000),
-            'object_id' => $faker->numberBetween(1,9)
+            'tourist_object_id' => $faker->numberBetween(1,9)
             ]);
         }
     }

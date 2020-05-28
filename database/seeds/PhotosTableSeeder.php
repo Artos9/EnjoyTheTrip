@@ -12,31 +12,31 @@ class PhotosTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 100; $i++) { 
+        for ($i=1; $i < 100; $i++) {
 
             DB::table('photos')->insert([
 
-            'photoable_type' => 'App\Object',
+            'photoable_type' => 'App\TouristObject',
             'photoable_id' => $faker->numberBetween(1,9),
             'path' => $faker->imageUrl(800,400,'city'),
 
         ]);
         }
-        
+
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 200; $i++) { 
+        for ($i=1; $i < 200; $i++) {
 
             DB::table('photos')->insert([
 
             'photoable_type' => 'App\Room',
-            'photoable_id' => $faker->numberBetween(1,9),
+            'photoable_id' => $faker->numberBetween(1,29),
             'path' => $faker->imageUrl(800,400,'nightlife'),
 
         ]);
         }
 
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 10; $i++) { 
+        for ($i=1; $i < 10; $i++) {
 
             DB::table('photos')->insert([
 

@@ -12,7 +12,7 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 30; $i++) { 
+        for ($i=1; $i < 30; $i++) {
 
             DB::table('articles')->insert([
 
@@ -20,7 +20,7 @@ class ArticlesTableSeeder extends Seeder
             'content' => $faker->text(1000),
             'created_at' => $faker->dateTime,
             'user_id' => $faker->numberBetween(1,9),
-            'object_id' => $faker->numberBetween(1,9),
+            'tourist_object_id' => $faker->numberBetween(1,9),
 
             ]);
         }

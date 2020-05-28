@@ -12,14 +12,14 @@ class CommentsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 50; $i++) { 
+        for ($i=1; $i < 50; $i++) {
 
             DB::table('comments')->insert([
 
             'content' => $faker->text(500),
             'rating' => $faker->numberBetween(1,5),
             'user_id' => $faker->numberBetween(1,9),
-            'commentable_type' => $faker->randomElement(['App\Object', 'App\Article']),
+            'commentable_type' => $faker->randomElement(['App\TouristObject', 'App\Article']),
             'commentable_id' => $faker->numberBetween(1,9),
 
             ]);

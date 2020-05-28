@@ -12,11 +12,10 @@ class LikeablesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('pl_PL');
-        for ($i=1; $i < 40; $i++) { 
+        for ($i=1; $i < 40; $i++) {
 
             DB::table('likeables')->insert([
-
-            'likeable_type' => $faker->randomElement(['App\Object', 'App\Article']),
+            'likeable_type' => $faker->randomElement(['App\TouristObject', 'App\Article']),
             'likeable_id' => $faker->numberBetween(1,9),
             'user_id' => $faker->numberBetween(1,9),
 

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\EnjoyTheTrip\Repositories\FrontendRepository;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\View;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('frontend.*', function ($view) {
+            
+            $view->with('placeholder',asset('images/apple.png'));
+
+
+        });
     }
 }

@@ -31,7 +31,7 @@ class FrontendController extends Controller
     {
         $object = $this->fR->getTouristObject($id);
 
-        return view('frontend.object');
+        return view('frontend.object', ['object' => $object]);
     }
 
     public function person()
