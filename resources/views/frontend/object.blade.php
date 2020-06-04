@@ -35,7 +35,7 @@
 
             <ul class="list-inline">
                 @foreach( $object->users as $user)
-                    <li><a href="{{ route('person') }}"><img title=" {{ $user->Fullname }} " class="media-object img-responsive" width="50" height="50" src=" {{$user->photos->first()->path }} " alt="..."> </a></li>
+                    <li><a href="{{ route('person') }}"><img title=" {{ $user->Fullname }} " class="media-object img-responsive" width="50" height="50" src=" {{$user->photos->first()->path ?? $placeholder}} " alt="..."> </a></li>
 
                 @endforeach
             </ul>
@@ -60,7 +60,7 @@
                     <div class="col-md-3 col-sm-6">
 
                         <div class="thumbnail">
-                        <img class="img-responsive img-circle" src="{{ $room->photos->first()->path ?? null  }}" alt="...">
+                        <img class="img-responsive img-circle" src="{{ $room->photos->first()->path ?? $placeholder  }}" alt="...">
                             <div class="caption">
                             <h3>Nr {{ $room->room_number }}</h3>
                             <p>{{ Str::limit($room->description,70)}}</p>
@@ -83,8 +83,8 @@
         @foreach ($object->comments as $comment)
             <div class="media">
                 <div class="media-left media-top">
-                    <a title="John Doe" href="{{ route('person') }}">
-                        <img class="media-object" width="50" height="50" src="http://lorempixel.com/50/50/people/?x=<?= mt_rand(1, 9999999) ?>" alt="...">
+                    <a title="{{ $comment->user->FullName }}" href="{{ route('person') }}">
+                    <img width="50" height="50" class="media-object" width="50" height="50" src=" {{ $comment->photos->first()->path ?? $placeholder}}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">
