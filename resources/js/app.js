@@ -1,32 +1,78 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+/*The MIT License (MIT)
 
-require('./bootstrap');
+Copyright (c) 2017 www.netprogs.pl
 
-window.Vue = require('vue');
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.*/
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+$(function() {
+    $(".datepicker").datepicker();
+});
 
-const app = new Vue({
-    el: '#app',
+
+$(function() {
+    $(".autocomplete").autocomplete({
+        source: base_url + '/searchCities',
+        minLength: 2,
+        select: function(event, ui) {
+
+            //            console.log(ui.item.value);
+        }
+
+
+    });
+});
+
+
+
+//room.php
+var eventDates = {};
+var dates = ['02/15/2019', '02/16/2019', '02/25/2019'];
+for (var i = 0; i <= dates.length; i++) {
+    eventDates[new Date(dates[i])] = new Date(dates[i]);
+}
+
+
+$(function() {
+    $("#avaiability_calendar").datepicker({
+        onSelect: function(data) {
+
+            //            console.log($('#checkin').val());
+
+            if ($('#checkin').val() == '') {
+                $('#checkin').val(data);
+            } else if ($('#checkout').val() == '') {
+                $('#checkout').val(data);
+            } else if ($('#checkout').val() != '') {
+                $('#checkin').val(data);
+                $('#checkout').val('');
+            }
+
+        },
+        beforeShowDay: function(date) {
+            //console.log(date);
+            if (eventDates[date])
+                return [false, 'unavaiable_date'];
+            else
+                return [true, ''];
+        }
+
+
+    });
 });

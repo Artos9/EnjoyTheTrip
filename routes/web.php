@@ -21,7 +21,7 @@ Route::get('/article', 'FrontendController@article')->name('article');
 Route::get('/roomSearch', 'FrontendController@roomsearch')->name('roomSearch');
 Route::get(trans('routes.person'), 'FrontendController@person')->name('person');
 
-
+Route::get('/searchCities', 'FrontendController@searchCities');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
