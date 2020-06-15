@@ -18,7 +18,7 @@ Route::get('/', 'FrontendController@index')->name('home');
 Route::get('/obiekt'.'/{id}', 'FrontendController@object')->name('object');
 Route::get('/room', 'FrontendController@room')->name('room');
 Route::get('/article', 'FrontendController@article')->name('article');
-Route::get('/roomSearch', 'FrontendController@roomsearch')->name('roomSearch');
+Route::post('/roomSearch', 'FrontendController@roomsearch')->name('roomSearch');
 Route::get(trans('routes.person'), 'FrontendController@person')->name('person');
 
 Route::get('/searchCities', 'FrontendController@searchCities');

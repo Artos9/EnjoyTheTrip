@@ -46,9 +46,21 @@ class FrontendController extends Controller
         return view('frontend.room');
     }
 
-    public function roomsearch()
+    public function roomsearch(Request $request)
     {
-        return view('frontend.roomsearch');
+        if ($city = $this->fG->getSearchResults($request))
+        {
+            dd($city);
+            return view('frontend.roomsearch',['city' => $city]);
+        }
+        else
+        {
+            if(!$request->ajax()())
+            return redirect('/')->with('norooms','No offers were found matching the criteria');
+        }
+
+
+
     }
 
     public function searchCities(Request $request)
