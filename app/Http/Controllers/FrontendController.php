@@ -50,12 +50,11 @@ class FrontendController extends Controller
     {
         if ($city = $this->fG->getSearchResults($request))
         {
-            dd($city);
             return view('frontend.roomsearch',['city' => $city]);
         }
         else
         {
-            if(!$request->ajax()())
+            if(!$request->ajax())
             return redirect('/')->with('norooms','No offers were found matching the criteria');
         }
 
